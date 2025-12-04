@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@prisma/adapter-mariadb": "^7.1.0",
-    "@prisma/client": "^7.1.0",
+    "@prisma/client": "^6.19.0",
     "mysql2": "^3.15.3",
     "next": "15.5.6",
-    "prisma": "^7.1.0",
+    "prisma": "^6.19.0",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
