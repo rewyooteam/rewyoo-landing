@@ -28,9 +28,10 @@ export default function Home() {
         setStatus({ type: "error", message: `❌ ${data.error}` });
       }
 
-      // Clear the message after 5 seconds
+      // Clear the message after 5 second
       setTimeout(() => setStatus(null), 5000);
     } catch (err) {
+      console.log(err);
       setStatus({
         type: "error",
         message: "❌ Something went wrong. Please try again.",

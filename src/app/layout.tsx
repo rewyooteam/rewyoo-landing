@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rewyoo - Student-Institute Social Network",
-  description: "The vertical social network bridging the gap between students, alumni, and educational institutes.",
+  description:
+    "The vertical social network bridging the gap between students, alumni, and educational institutes.",
 };
 
 export default function RootLayout({
