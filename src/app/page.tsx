@@ -1,5 +1,44 @@
 "use client";
+import React, { useState } from "react";
 export default function Home() {
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus({ type: "success", message: "✅ You're on the waitlist!" });
+        form.reset();
+      } else {
+        setStatus({ type: "error", message: `❌ ${data.error}` });
+      }
+
+      // Clear the message after 5 seconds
+      setTimeout(() => setStatus(null), 5000);
+    } catch (err) {
+      setStatus({
+        type: "error",
+        message: "❌ Something went wrong. Please try again.",
+      });
+      setTimeout(() => setStatus(null), 5000);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-blue-100 selection:text-blue-900">
       {/* Header/Nav */}
@@ -46,9 +85,10 @@ export default function Home() {
         <div className="w-full max-w-md mx-auto mb-20">
           <form
             className="flex flex-col sm:flex-row gap-3"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
             <input
+              name="email"
               type="email"
               placeholder="Enter your email address"
               className="grow px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
@@ -64,6 +104,17 @@ export default function Home() {
           <p className="text-xs text-gray-400 mt-3">
             Be the first to know when we launch. No spam, ever.
           </p>
+          {status && (
+            <div
+              className={`mt-4 p-3 rounded-md text-sm ${
+                status.type === "success"
+                  ? "bg-green-100 text-green-800"
+                  : "bg-red-100 text-red-800"
+              }`}
+            >
+              {status.message}
+            </div>
+          )}
         </div>
 
         {/* Features Grid */}
