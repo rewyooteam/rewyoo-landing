@@ -52,7 +52,7 @@ export default function Home() {
             alt="Rewyoo Logo"
             width={32}
             height={32}
-            className="rounded-lg"
+            className="rounded-lg dark:hue-rotate-180 dark:invert"
           />
           Rewyoo
         </div>
