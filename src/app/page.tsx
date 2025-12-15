@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
+import { ModeToggle } from "@/components/theme-toggle";
 export default function Home() {
   const [status, setStatus] = useState<{
     type: "success" | "error";
@@ -45,27 +47,32 @@ export default function Home() {
       {/* Header/Nav */}
       <header className="w-full max-w-6xl mx-auto p-6 flex justify-between items-center">
         <div className="font-bold text-xl tracking-tighter flex items-center gap-2">
-          <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-lg font-mono">
-            R
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Rewyoo Logo"
+            width={32}
+            height={32}
+            className="rounded-lg"
+          />
           Rewyoo
         </div>
-        <nav>
+        <nav className="flex items-center gap-4">
           <a
             href="mailto:contact@rewyoo.com"
             className="text-sm font-medium hover:text-blue-600 transition-colors"
           >
             Contact Us
           </a>
+          <ModeToggle />
         </nav>
       </header>
 
       {/* Main Content */}
       <main className="grow flex flex-col items-center justify-center px-6 py-12 sm:py-20 text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium uppercase tracking-wider mb-8 border border-blue-100 dark:border-blue-800">
-          <span className="relative flex h-2 w-2">
+        <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-2xl sm:text-3xl font-bold uppercase tracking-wider mb-12 border border-blue-100 dark:border-blue-800 shadow-lg shadow-blue-500/10">
+          <span className="relative flex h-4 w-4">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-blue-500"></span>
           </span>
           Coming Soon
         </div>
@@ -92,7 +99,7 @@ export default function Home() {
               name="email"
               type="email"
               placeholder="Enter your email address"
-              className="grow px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+              className="grow px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               required
             />
             <button
@@ -123,7 +130,7 @@ export default function Home() {
           <div className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group">
             <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-6 h-6 text-blue-600"
+                className="w-6 h-6 text-blue-600 dark:text-blue-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -146,7 +153,7 @@ export default function Home() {
           <div className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group">
             <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-6 h-6 text-violet-600"
+                className="w-6 h-6 text-violet-600 dark:text-violet-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -169,7 +176,7 @@ export default function Home() {
           <div className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group">
             <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-6 h-6 text-emerald-600"
+                className="w-6 h-6 text-emerald-600 dark:text-emerald-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
