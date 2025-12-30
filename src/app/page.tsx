@@ -7,8 +7,8 @@ export default function Home() {
     type: "success" | "error";
     message: string;
   } | null>(null);
-  const [registerAs, setRegisterAs] = useState<"individual" | "institute">(
-    "individual"
+  const [registerAs, setRegisterAs] = useState<"INDIVIDUAL" | "INSTITUTION">(
+    "INDIVIDUAL"
   );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +21,7 @@ export default function Home() {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, registerAs }),
+        body: JSON.stringify({ email, type: registerAs }),
       });
 
       const data = await res.json();
@@ -106,10 +106,10 @@ export default function Home() {
             <div className="w-full flex rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-1">
               <button
                 type="button"
-                onClick={() => setRegisterAs("individual")}
-                aria-pressed={registerAs === "individual"}
+                onClick={() => setRegisterAs("INDIVIDUAL")}
+                aria-pressed={registerAs === "INDIVIDUAL"}
                 className={`flex-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                  registerAs === "individual"
+                  registerAs === "INDIVIDUAL"
                     ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
@@ -118,10 +118,10 @@ export default function Home() {
               </button>
               <button
                 type="button"
-                onClick={() => setRegisterAs("institute")}
-                aria-pressed={registerAs === "institute"}
+                onClick={() => setRegisterAs("INSTITUTION")}
+                aria-pressed={registerAs === "INSTITUTION"}
                 className={`flex-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                  registerAs === "institute"
+                  registerAs === "INSTITUTION"
                     ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}

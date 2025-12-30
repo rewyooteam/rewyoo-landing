@@ -8,8 +8,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum RegistrationType {
+  INDIVIDUAL
+  INSTITUTION
+}
+
 model Waitlist {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  createdAt DateTime @default(now())
+  id        String           @id @default(cuid())
+  email     String           @unique
+  type      RegistrationType
+  createdAt DateTime         @default(now())
 }
