@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, type } = await request.json();
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
@@ -12,6 +12,7 @@ export async function POST(request: Request) {
     const result = await db.waitlist.create({
       data: {
         email,
+        type,
       },
     });
 
